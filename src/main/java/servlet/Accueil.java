@@ -9,8 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.ContestDao;
 import dao.GameDao;
 import dao.PlayerDao;
+import model.Contest;
 import model.Game;
 import model.Player;
 
@@ -37,12 +39,18 @@ public class Accueil extends HttpServlet {
 		// Instancier le DAO
 		//Creer la liste a parcourir
 		// soumettre la requete au serveur
+		// Liste des joueurs
 		PlayerDao playerD = new PlayerDao();
 		ArrayList<Player> ListePlayer = (ArrayList<Player>) playerD.read();
 		request.setAttribute("ListePlayer", ListePlayer);
+		// Liste des jeux
 		GameDao gameD = new GameDao();
 		ArrayList<Game> ListeGame = (ArrayList<Game>) gameD.read();
 		request.setAttribute("ListeGame", ListeGame);
+		// Liste des match
+		ContestDao contestD = new ContestDao();
+		ArrayList<Contest> ListeContest = (ArrayList<Contest>) contestD.read();
+		request.setAttribute("ListeContest", ListeContest);
 		request.getRequestDispatcher("/accueil/accueil.jsp").forward(request, response);
 		
 	}

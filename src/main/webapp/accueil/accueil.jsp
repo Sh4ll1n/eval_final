@@ -39,4 +39,24 @@
   </tbody>
 </table>
     
+<table class="table" id="tableContest">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Match sur</th>
+      <th scope="col">Date du match</th>
+      <th scope="col">Gagnant du match</th>
+    </tr>
+  </thead>
+  <tbody>
+	  <c:forEach items="${ListeContest }" var="element">
+	  	<tr>
+	      <th scope="row">${element.getId()}</th>
+	      <td>${element.getGame_id() }</td>
+	      <td>${element.getStart_date() }</td>
+	      <td>${element.getWinner_id() }</td>
+	     </tr>
+	  </c:forEach>
+  </tbody>
+</table>
 <%@ include file="/header_footer/footer.jsp" %>
