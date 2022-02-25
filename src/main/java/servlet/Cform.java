@@ -50,7 +50,6 @@ public class Cform extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// Récupération de saisies
 		int game = Integer.parseInt(request.getParameter("select_game"));
-		
 		// INSERT INTO 
 		Contest match = new Contest(game);
 		ContestDao contestD = new ContestDao();

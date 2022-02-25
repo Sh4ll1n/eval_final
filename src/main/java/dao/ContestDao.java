@@ -21,6 +21,7 @@ public class ContestDao implements Idao<Contest> {
 			PreparedStatement sql = connect.prepareStatement("INSERT INTO contest"+
 		"(game_id,start_date) VALUES (?,NOW()");
 			sql.setInt(1, match.getGameId().getId());
+			//sql.setDate(2, match.getStart_date());
 			sql.executeUpdate();
 			System.out.println("Match enregistré");
 			msg = true;

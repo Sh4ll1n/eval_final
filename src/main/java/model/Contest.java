@@ -28,6 +28,9 @@ public class Contest {
 	public Contest() {
 		super();
 	}
+	public Contest(int game) {
+		// TODO Auto-generated constructor stub
+	}
 	public int getId() {
 		return id;
 	}
@@ -46,8 +49,8 @@ public class Contest {
 	public void setGame_id(int game_id) {
 		this.game_id = game_id;
 	}
-	public Date getStart_date() {
-		return start_date;
+	public java.sql.Date getStart_date() {
+		return (java.sql.Date) start_date;
 	}
 	public void setStart_date(Date start_date) {
 		this.start_date = start_date;
