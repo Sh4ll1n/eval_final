@@ -9,6 +9,7 @@ public class Contest {
 	private Date start_date;
 	private int winner_id;
 	private Player winnerId;
+	
 	public Contest(int id, Game gameId, int game_id, Date start_date, int winner_id, Player winnerId) {
 		super();
 		this.id = id;
@@ -24,6 +25,11 @@ public class Contest {
 		this.game_id = game_id;
 		this.start_date = start_date;
 		this.winner_id = winner_id;
+	}
+	
+	public Contest(Game gameId) {
+		super();
+		this.gameId = gameId;
 	}
 	public Contest() {
 		super();

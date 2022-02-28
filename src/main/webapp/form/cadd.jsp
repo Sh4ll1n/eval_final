@@ -1,5 +1,5 @@
 <%@ include file="/header_footer/header.jsp" %>
-	<form class="row g-3">
+	<form class="row g-3" method="post" action="<%= request.getContextPath() %>/ajouter_match">
 	  <div class="col-md-4">
 	    <label for="select_game" class="form-label">Sélectionner un jeu</label>
 	    <select name="select_game" id="select_game" required>

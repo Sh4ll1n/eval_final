@@ -21,7 +21,11 @@ public Game(int id, String title, int minPlayers, int maxPlayers) {
 	this.maxPlayers = maxPlayers;
 }
 
-// Getter Setter
+public Game() {
+	super();
+}
+
+	// Getter Setter
 	public int getId() {
 		return id;
 	}

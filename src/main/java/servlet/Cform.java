@@ -51,9 +51,11 @@ public class Cform extends HttpServlet {
 		// Récupération de saisies
 		int game = Integer.parseInt(request.getParameter("select_game"));
 		// INSERT INTO 
-		Contest match = new Contest(game);
 		ContestDao contestD = new ContestDao();
-		
+		GameDao test = new GameDao();
+		System.out.println(game);
+		Contest match = new Contest(test.findById(game));
+		System.out.println(match.getGameId());
 		contestD.create(match);
 		System.out.println(match);
 		doGet(request, response);

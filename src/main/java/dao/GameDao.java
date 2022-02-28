@@ -56,8 +56,23 @@ public class GameDao implements Idao<Game> {
 
 	@Override
 	public Game findById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Game jeu = new Game();
+		try {
+PreparedStatement req = connect.prepareStatement("SELECT * FROM game WHERE id = ?");
+			req.setInt(1, id);
+			ResultSet rs = req.executeQuery();
+			while(rs.next()) {
+					jeu = new Game(
+						rs.getInt("id"),
+						rs.getString("title"),
+						rs.getInt("min_players"),
+						rs.getInt("max_players")
+						);
+			};
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return jeu;
 	}
 
 }
