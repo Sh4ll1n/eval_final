@@ -27,7 +27,7 @@ public class GameDao implements Idao<Game> {
 			System.out.println("Jeu enregistré");
 			msg = true;
 		} catch (Exception e) {
-			System.out.println("Jeu non enregistré");
+			System.out.println("Jeu non enregistré"+e.getMessage());
 		}
 		return msg;
 	}
@@ -37,7 +37,6 @@ public class GameDao implements Idao<Game> {
 		List<Game> jeu = new ArrayList<>();
 		try {
 			PreparedStatement req = connect.prepareStatement("SELECT * FROM game" );
-			
 			ResultSet rs = req.executeQuery();
 			while(rs.next()) {
 				Game game = new Game(
@@ -58,7 +57,7 @@ public class GameDao implements Idao<Game> {
 	public Game findById(int id) {
 		Game jeu = new Game();
 		try {
-PreparedStatement req = connect.prepareStatement("SELECT * FROM game WHERE id = ?");
+			PreparedStatement req = connect.prepareStatement("SELECT * FROM game WHERE id = ?");
 			req.setInt(1, id);
 			ResultSet rs = req.executeQuery();
 			while(rs.next()) {

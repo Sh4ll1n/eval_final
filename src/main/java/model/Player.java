@@ -28,9 +28,6 @@ public Player(int id, String email, String nickname) {
 		return id;
 	}
 	
-	public void setId(int id) {
-		this.id = id;
-	}
 	
 	public String getEmail() {
 		return email;

@@ -13,25 +13,28 @@ public class Game {
 		this.maxPlayers = maxPlayers;
 	}
 	
-public Game(int id, String title, int minPlayers, int maxPlayers) {
-	super();
-	this.id = id;
-	this.title = title;
-	this.minPlayers = minPlayers;
-	this.maxPlayers = maxPlayers;
-}
+	public Game(int id, String title, int minPlayers, int maxPlayers) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.minPlayers = minPlayers;
+		this.maxPlayers = maxPlayers;
+	}
+	
+	public Game(int id) {
+		super();
+		this.id = id;
+	}
 
-public Game() {
-	super();
-}
+	public Game() {
+		super();
+	}
 
 	// Getter Setter
 	public int getId() {
 		return id;
 	}
-	public void setId(int id) {
-		this.id = id;
-	}
+	
 	public String getTitle() {
 		return title;
 	}

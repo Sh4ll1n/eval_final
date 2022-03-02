@@ -46,15 +46,17 @@
       <th scope="col">Match sur</th>
       <th scope="col">Date du match</th>
       <th scope="col">Gagnant du match</th>
+      <th scope="col">Ajout joueur</th>
     </tr>
   </thead>
   <tbody>
 	  <c:forEach items="${ListeContest }" var="element">
 	  	<tr>
 	      <th scope="row">${element.getId()}</th>
-	      <td>${element.getGame_id() }</td>
+	      <td>${element.getGameId().getTitle() }</td>
 	      <td>${element.getStart_date() }</td>
-	      <td>${element.getWinner_id() }</td>
+	      <td>${element.getWinnerId().getNickname() }</td>
+	      <td> <a href="${monLien5 }" type="button" class="btn btn-primary">+</a></td>
 	     </tr>
 	  </c:forEach>
   </tbody>

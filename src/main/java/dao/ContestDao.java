@@ -7,49 +7,67 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Contest;
+import model.Game;
+import model.Player;
 import servlet.GetConnection;
 
 public class ContestDao implements Idao<Contest> {
-	
 	Connection connect = GetConnection.getConnection();
-	List<Contest> listeContest = new ArrayList<Contest>();
+	//List<Contest> listeContest = new ArrayList<>();
 	
 	@Override
 	public boolean create(Contest match) {
 		boolean msg = false;
 		try {
-			PreparedStatement sql = connect.prepareStatement("INSERT INTO contest"+
-		"(game_id,start_date) VALUES (?,NOW()");
+			PreparedStatement sql = connect.prepareStatement
+					("INSERT INTO contest(game_id,start_date)"
+					+"VALUES (?,NOW())"
+					);
+			// Comme j'ai viré mon attribut gameID en int. Ne fonctionne pus.
 			sql.setInt(1, match.getGameId().getId());
-			//sql.setDate(2, match.getStart_date());
 			sql.executeUpdate();
-			System.out.println("Match enregistré");
+			System.out.println(sql+"Match enregistré");
 			msg = true;
 		} catch ( Exception e) {
-			System.out.println("Match non enregistré");
+			System.out.println("Match non enregistré"+e.getMessage());
 		}
 		return false;
 	}
 
 	@Override
 	public List<Contest> read() {
-		List<Contest> match = new ArrayList<>();
+		List<Contest> listeContest = new ArrayList<>();
 		try {
-			PreparedStatement req = connect.prepareStatement("SELECT * FROM contest ORDER BY start_date DESC ");
+			PreparedStatement req = connect.prepareStatement
+					("SELECT * FROM contest"
+					+" LEFT JOIN game ON game.id = contest.game_id"
+					+" LEFT JOIN player ON player.id = contest.winner_id" 
+					+" ORDER BY start_date DESC"
+					);
 			ResultSet rs = req.executeQuery();
 			while(rs.next()) {
 				Contest contest = new Contest(
 						rs.getInt("id"),
-						rs.getInt("game_id"),
+								  new Game(
+						// Je peux mettre directement le nom de la colonne de ma requete sql comme rs.getInt(3)
+						rs.getInt("id"),
+						rs.getString("title"),
+						rs.getInt("min_players"),
+						rs.getInt("max_players")
+								),
 						rs.getDate("start_date"),
-						rs.getInt("winner_id")
+								  new Player(
+						rs.getInt("id"),
+						rs.getString("email"),
+						rs.getString("nickname")
+								)
 						);
-				match.add(contest);
+				listeContest.add(contest);
 			};
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		return null;
+		return listeContest;
 	}
 
 	@Override

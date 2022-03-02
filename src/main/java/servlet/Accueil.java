@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -39,6 +40,7 @@ public class Accueil extends HttpServlet {
 		// Instancier le DAO
 		//Creer la liste a parcourir
 		// soumettre la requete au serveur
+		
 		// Liste des joueurs
 		PlayerDao playerD = new PlayerDao();
 		ArrayList<Player> ListePlayer = (ArrayList<Player>) playerD.read();
@@ -49,8 +51,9 @@ public class Accueil extends HttpServlet {
 		request.setAttribute("ListeGame", ListeGame);
 		// Liste des match
 		ContestDao contestD = new ContestDao();
-		ArrayList<Contest> ListeContest = (ArrayList<Contest>) contestD.read();
+		List<Contest> ListeContest = contestD.read();
 		request.setAttribute("ListeContest", ListeContest);
+		//
 		request.getRequestDispatcher("/accueil/accueil.jsp").forward(request, response);
 		
 	}

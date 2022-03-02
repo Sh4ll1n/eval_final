@@ -5,7 +5,8 @@
     <c:url value="/ajouter_jeu" var="monLien2"/>
     <c:url value="/ajouter_joueur" var="monLien3"/> 
     <c:url value="/ajouter_match" var="monLien4"/> 
-   
+   	<c:url value="/ajouter_player_match" var="monLien5"/>
+   	
 <!DOCTYPE html>
 <html>
 <head>
